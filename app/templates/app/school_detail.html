@@ -1,0 +1,32 @@
+{% extends "app/app_base.html" %}
+
+{% block content %}
+
+<div class="jumbotron">
+  <h1>Detail of this School :</h1>
+  <ul>
+    <li>School Name :{{school_detail.name}}</li>
+    <li>Principal :{{school_detail.principal}}</li>
+    <li>Location :{{school_detail.location}}</li>
+  </ul>
+
+  <h1>Students Detail :</h1>
+  {% for student in school_detail.students.all %}
+  <img src="{{ student.pic.url }}" class="img-fluid"alt="FuckedUp" height="100" width="140">
+  <h2>{{student.name}}</h2>
+  <h2>{{student.age}}</h2>
+</br>
+</br>
+  {% endfor %}
+
+</div>
+<div class="container">
+  <p><a class='btn btn-warning' href="{% url 'update' pk=school_detail.pk %}">Update</a></p>
+</div>
+
+<div class="container">
+<a href="{% url 'delete' pk=school_detail.pk %}"><button type="button" class="btn btn-danger">Delete</button></a>  
+
+</div>
+
+{% endblock %}
